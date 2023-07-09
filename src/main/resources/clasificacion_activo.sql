@@ -1,0 +1,36 @@
+INSERT INTO CLASIFICACION_ACTIVO (descripcion)
+SELECT 'MAQUINARIA Y EQUIPOS'
+    WHERE NOT EXISTS (
+  SELECT 1 FROM CLASIFICACION_ACTIVO WHERE  descripcion = 'MAQUINARIA Y EQUIPOS'
+);
+
+INSERT INTO CLASIFICACION_ACTIVO (descripcion)
+SELECT 'MUEBLES Y ENSERES'
+    WHERE NOT EXISTS (
+  SELECT 1 FROM CLASIFICACION_ACTIVO WHERE  descripcion = 'MUEBLES Y ENSERES'
+);
+
+INSERT INTO CLASIFICACION_ACTIVO (descripcion)
+SELECT 'EQUIPOS DE COMPUTO'
+    WHERE NOT EXISTS (
+  SELECT 1 FROM CLASIFICACION_ACTIVO WHERE  descripcion = 'EQUIPOS DE COMPUTO'
+);
+
+INSERT INTO CLASIFICACION_ACTIVO (descripcion)
+SELECT 'EQUIPOS DE COMUNICACION'
+    WHERE NOT EXISTS (
+  SELECT 1 FROM CLASIFICACION_ACTIVO WHERE descripcion = 'EQUIPOS DE COMUNICACION'
+);
+
+INSERT INTO TASA_DEPRECIACION (año, tasa_depreciacion, clasificacion_activo_id)
+SELECT 2023, 0.04, id
+FROM CLASIFICACION_ACTIVO
+WHERE descripcion = 'EQUIPOS DE COMPUTO'
+AND NOT EXISTS(
+    SELECT 1 FROM TASA_DEPRECIACION WHERE año = 2023
+                                      AND clasificacion_activo_id =
+                                                        SELECT  id
+                                                        FROM CLASIFICACION_ACTIVO
+                                                        WHERE descripcion = 'EQUIPOS DE COMPUTO'
+);
+
