@@ -1,17 +1,19 @@
-version: '3.8'
-
-services:
-  h2-database:
-    image: oscarfonts/h2:latest
-    ports:
-      - '8082:8082'
-      - '9092:9092'
-    volumes:
-      - ./h2-data:/h2-data
-
-  tu-app:
-    build: .
-    ports:
-      - '8080:8080'
-    depends_on:
-      - h2-database
+  version: '3'
+  services:
+    server:
+      container_name: server
+      build:
+        context: .
+        dockerfile: Dockerfile
+      environment:
+        SPRING_APPLICATION_JSON: >
+          {
+            "db": {
+              "h2": true,
+              "schema": true,
+              "seed": true,
+              "populate": true
+            }
+          }
+      ports:
+        - 8080:8080

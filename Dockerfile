@@ -9,7 +9,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Empaquetar la aplicación usando Maven
-RUN ./mvnw package -DskipTests
+#RUN ./mvnw package -DskipTests
 
 # Copiar el archivo JAR generado durante la fase de construcción
 COPY ./target/SistemaInventario-0.0.1-SNAPSHOT.jar ./SistemaInventario-0.0.1-SNAPSHOT.jar
