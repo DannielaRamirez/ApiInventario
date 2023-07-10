@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  h2-database:
+    image: oscarfonts/h2:latest
+    ports:
+      - '8082:8082'
+      - '9092:9092'
+    volumes:
+      - ./h2-data:/h2-data
+
+  tu-app:
+    build: .
+    ports:
+      - '8080:8080'
+    depends_on:
+      - h2-database
