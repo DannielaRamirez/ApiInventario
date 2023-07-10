@@ -1,16 +1,16 @@
 spring:
   datasource:
-    url: jdbc:h2:file:D:/DataBaseH2/data/SistemaInventario
+    url: jdbc:h2:mem:testdb
     username: sa
     password:
   jpa:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        show_sql: true
+        show_sql: false
   h2:
     console:
       enabled: true

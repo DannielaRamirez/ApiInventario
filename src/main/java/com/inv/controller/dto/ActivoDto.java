@@ -1,6 +1,5 @@
 package com.inv.controller.dto;
 
-import com.inv.execption.ErrorDetails;
 import com.inv.model.ActivoStatus;
 import com.inv.model.ClasificacionActivo;
 import lombok.AllArgsConstructor;

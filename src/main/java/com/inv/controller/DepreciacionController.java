@@ -1,9 +1,9 @@
 package com.inv.controller;
 
 import com.inv.controller.dto.ActivoDto;
-import com.inv.execption.NotFoundException;
 import com.inv.execption.ErrorDetails;
 import com.inv.execption.ExceptionHandlerUtil;
+import com.inv.execption.NotFoundException;
 import com.inv.model.Activo;
 import com.inv.repository.ActivoRepository;
 import com.inv.service.DepreciacionService;
